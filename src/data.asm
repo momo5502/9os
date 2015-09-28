@@ -36,3 +36,38 @@ jingleStages: dw nyanCatIntro, nyanCatMusic, nyanCatMusic, nyanCatMusic2, nyanCa
 ; LEL
 rainbowTable: db 28h, 2Ah, 2Bh, 2Eh, 36h, 6Bh, 0
 
+GDT: 
+
+dq 00000000000000000h 
+
+dw 0FFFFh 
+dw 00000h
+db 00h   
+db 010011010b
+db 011001111b
+db 00h   
+
+dw 0FFFFh 
+dw 00000h
+db 00h   
+db 010010010b
+db 011001111b
+db 00h 
+
+dw 0FFFFh 
+dw 00000h
+db 00h   
+db 010011010b
+db 010001111b
+db 00h   
+
+dw 0FFFFh 
+dw 00000h
+db 00h   
+db 010010010b
+db 010001111b
+db 00h 
+
+GDTP:                           
+dw GDTP-GDT-1       
+dd GDT           

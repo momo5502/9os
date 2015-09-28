@@ -7,6 +7,7 @@
 
 ;--------------------------------------------
 ; Move cursor to (0,0)
+; Deprecated: Relies on bios interrrupt
 ;--------------------------------------------
 moveCursorToOrigin:
 	xor ax, ax
@@ -40,6 +41,9 @@ writeString:
 ;--------------------------------------------
 ; Write character passed on the stack
 ; Note the convention is __stdcall
+;
+; Deprecated: Relies on bios interrrupt
+; TODO: Write to text buffer
 ;--------------------------------------------
 writeChar:
 	mov ax, [esp + 2h]

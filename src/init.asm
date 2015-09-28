@@ -9,10 +9,12 @@
 ; Main initialization routine
 ;--------------------------------------------
 initialize:
+	mov sp, 9C00h		; Initialize stack
 	call initGfxMode
 	call initA20
-	;call initPMode
-	retn
+	;jmp initPMode
+	jmp main
+	;retn
 	
 	
 ;--------------------------------------------
@@ -97,6 +99,14 @@ initPMode:
 	or ax, 80h
 	out 70h, ax
 	
+	xor eax,  eax
+	mov ds, eax       
+	mov es, eax
+	mov fs, eax
+	mov gs, eax
+	mov ss, eax
+	lgdt [GDTP]
+	
 	; Enter protected mode
 	mov eax, cr0
 	or eax, 1
@@ -108,4 +118,9 @@ initPMode:
 	out 70h, ax
 	
 	sti
-	retn
+	
+	jmp 08h:clear
+;[BITS 32]           
+clear:   
+	jmp main
+	
