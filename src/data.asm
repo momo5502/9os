@@ -5,9 +5,7 @@
 ;
 ;-----------------------------------------------------------------------------------------------------
 
-;msg: db " 9os by Maurice Heumann & Olrik Heuser  ", 0
-fore_color: db 7
-bg_color: db 0
+color: db 7
 xPos: dw 0
 yPos: dw 0
 
@@ -17,9 +15,6 @@ randSeed: dd 346575334
 
 screenWidth: dw 320
 screenHeight: dw 200
-
-pitFreq: dd 1193180
-freq: dw 0
 
 tonePos: db 0
 

@@ -42,38 +42,16 @@ main:
 ;	cyan:		36h
 ;	violet:		6Bh
 	
-	call drawRainbow
+	;call drawRainbow
 	
 	frame:
 		call framePlayJingle
-		
-		;call fillScreen
-		;call increaseForeColor
+		call drawAnimFrame
 		
 		push 1
 		call waitTicks
 		
 		jmp frame
-	
-
-	
-	;mov ax, 0Fh
-	;mov [fore_color], al
-	;push msg
-	;call writeString
-	
-;	colorScreen:
-;	
-;		call moveCursorToOrigin
-;		mov si, msg
-;		call writeString
-;	
-;		call fillScreen
-;		call increaseForeColor
-		;call randForeColor
-		
-;		call waitSomeTicks		
-;		jmp colorScreen
 
 	jmp $					; Infinite loop
 	hlt						; Halt causes a return to pxelinux
@@ -86,6 +64,7 @@ main:
 %include "time.asm"
 %include "maths.asm"
 %include "jingle.asm"
+%include "anim.asm"
 %include "init.asm"
 
 section .data

@@ -11,13 +11,12 @@
 initialize:
 	call initGfxMode
 	call initA20
-	;call initPMode
 	retn
 	
 	
 ;--------------------------------------------
 ; Initialize graphics mode
-; http://www.wagemakers.be/english/doc/vga
+; https://de.wikipedia.org/wiki/VESA_BIOS_Extension
 ;--------------------------------------------
 initGfxMode:
 	mov ax, 13h 
@@ -82,30 +81,3 @@ wait2A20:
 	jz wait2A20
 	retn
 
-	
-;--------------------------------------------
-; Enter protected mode
-; TODO:	- Setup gdt
-;				- Init 32bits
-;				- Jump to 32bit area
-;--------------------------------------------
-initPMode:
-	cli
-	
-	; Disable hardware interrupts
-	in ax, 70h
-	or ax, 80h
-	out 70h, ax
-	
-	; Enter protected mode
-	mov eax, cr0
-	or eax, 1
-	mov cr0, eax
-	
-	; Enablle hardware interrupts
-	in ax, 70h
-	and ax, 7Fh
-	out 70h, ax
-	
-	sti
-	retn
