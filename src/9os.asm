@@ -19,13 +19,14 @@ section .text
 ;--------------------------------------------
 ; Jump to initialization
 ;--------------------------------------------
-jmp initialize
-%include "init.asm"
+jmp main
 
 ;--------------------------------------------
 ; Main entry point
 ;--------------------------------------------
 main:
+	mov sp, 9C00h		; Initialize stack
+	call initialize
 	
 ; background:	7Fh 
 ; keks:				42h
@@ -85,6 +86,7 @@ main:
 %include "time.asm"
 %include "maths.asm"
 %include "jingle.asm"
+%include "init.asm"
 
 section .data
 %include "data.asm"
