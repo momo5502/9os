@@ -120,8 +120,11 @@ isScreenFull:
 ; void __stdcall paintPixel(short x, short y, char color)
 ;--------------------------------------------
 paintPixel:
-	mov cx, [esp + 2h] ; xPos
-	mov dx, [esp + 4h] ; yPos
+	push bp
+	mov bp, sp
+	
+	mov cx, [bp + 4h] ; xPos
+	mov dx, [bp + 6h] ; yPos
 	mov ax, [screenWidth]
 	mul dx
 	add ax, cx
@@ -130,9 +133,10 @@ paintPixel:
 	mov ax, 0A000h
 	mov es, ax
 	
-	mov ax, [esp + 6h] ; color
+	mov ax, [bp + 8h] ; color
 	mov byte [es:di], al
 	
+	pop bp
 	retn 6
 
 ;--------------------------------------------

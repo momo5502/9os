@@ -31,14 +31,18 @@ getClockTicks:
 ; Wait given ticks
 ;--------------------------------------------
 waitTicks:
+	push bp
+	mov bp, sp
+
 	call getClockTicks
 	mov bx, ax
 	
 	waitSomeTicks_tickLoop:
 		call getClockTicks
 		sub ax, bx
-		cmp ax, [esp + 2h]
+		cmp ax, [bp + 4h]
 		jle waitSomeTicks_tickLoop
 		
+	pop bp
 	retn 2
 	
