@@ -19,30 +19,14 @@ section .text
 ;--------------------------------------------
 ; Jump to initialization
 ;--------------------------------------------
+mov sp, 9C00h		; Initialize stack
 jmp main
 
 ;--------------------------------------------
 ; Main entry point
 ;--------------------------------------------
 main:
-	mov sp, 9C00h		; Initialize stack
 	call initialize
-	
-; background:	7Fh 
-; keks:				42h
-; streusel:			6Dh
-; glasur:			3Dh
-; baeckchen:		40h
-;
-; rainbow:
-;	red:			28h
-;	orange:		2Ah
-;	yellow: 		2Bh
-;	green:		2Eh
-;	cyan:		36h
-;	violet:		6Bh
-	
-	;call drawRainbow
 	
 	frame:
 		call framePlayJingle
@@ -67,6 +51,7 @@ main:
 %include "anim.asm"
 %include "init.asm"
 
+align 16
 section .data
 %include "data.asm"
 
@@ -74,5 +59,6 @@ section .data
 ; Bootloader signature
 ; MIght be messed up by sections
 ;--------------------------------------------
+align 16
 ;times 510-($-$$) db 0
 ;dw 0xAA55

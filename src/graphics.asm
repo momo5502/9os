@@ -171,3 +171,18 @@ writePixel:
 	writePixel_setX:				; Apply new x position
 		mov [xPos], ax
 	retn 
+
+	
+;--------------------------------------------
+; Get screen dimension
+;
+; ax - height * width
+; bx - width
+; cx - height
+;--------------------------------------------
+getScreenDim:
+	mov bx, [screenWidth]
+	mov cx, [screenHeight]
+	mov ax, cx
+	mul bx	
+	retn
