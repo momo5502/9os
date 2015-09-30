@@ -19,14 +19,15 @@ section .text
 ;--------------------------------------------
 ; Jump to initialization
 ;--------------------------------------------
-mov sp, 9C00h		; Initialize stack
 jmp main
 
 ;--------------------------------------------
 ; Main entry point
 ;--------------------------------------------
 main:
-	call initialize
+	mov sp, 9C00h		; Initialize stack
+	mov ax, 13h 		; Initialize video mode
+	int 10h
 	
 	frame:
 		call framePlayJingle
@@ -46,10 +47,8 @@ main:
 %include "graphics.asm"
 %include "sound.asm"
 %include "time.asm"
-%include "maths.asm"
 %include "jingle.asm"
 %include "anim.asm"
-%include "init.asm"
 
 align 16
 section .data

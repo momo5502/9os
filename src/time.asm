@@ -10,15 +10,6 @@
 ; Return in eax
 ;--------------------------------------------
 getClockTicks:
-	; Get clockticks using bios interrupt
-	;xor ax, ax
-	;int 1Ah
-	;mov ax, cx
-	;shl eax, 16
-	;mov ax, dx
-	;retn
-	
-	; Read ticks from memory
 	push ds
 	xor eax,eax
 	mov ds,eax

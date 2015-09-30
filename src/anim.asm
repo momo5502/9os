@@ -24,7 +24,6 @@
 ; Draw animation frame
 ;--------------------------------------------
 drawAnimFrame:
-	;call drawRainbow
 	call drawAnimBackground
 	retn
 	
@@ -33,21 +32,6 @@ drawAnimFrame:
 ; Draw background
 ;--------------------------------------------
 drawAnimBackground:
-	pusha
-	
-	; Set segment offset to video buffer
-	mov ax, 0A000h
-	mov es, ax
-	xor di, di
-	
-	call getScreenDim
-	mov cx, ax
-	
-	; Background color
-	mov ax, 7Fh
-	
-	; Fill buffer with color
-	rep stosb
-
-	popa
+	push 7Eh
+	call fillScreen
 	retn

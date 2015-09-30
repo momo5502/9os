@@ -5,13 +5,7 @@
 ;
 ;-----------------------------------------------------------------------------------------------------
 
-color: db 7
-xPos: dw 0
-yPos: dw 0
-
 tone: dw 4A0h
-
-randSeed: dd 346575334
 
 screenWidth: dw 320
 screenHeight: dw 200
@@ -27,7 +21,3 @@ nyanCatBlock2End2: dw 2154, 2, 0
 
 jingleStage: db 0
 jingleStages: dw nyanCatIntro, nyanCatMusic, nyanCatMusic, nyanCatMusic2, nyanCatBlock2End1, nyanCatMusic2, nyanCatBlock2End2, 0, 0
-
-; LEL
-rainbowTable: db 28h, 2Ah, 2Bh, 2Eh, 36h, 6Bh, 0
-
