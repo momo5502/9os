@@ -5,16 +5,9 @@
 ;-----------------------------------------------------------------------------------------------------
 
 ;--------------------------------------------
-; Define origin
-;
-; GRUB chainloading:	0x7C00
-; PXE booting:			0x100
+; Load binary-specific header
 ;--------------------------------------------
-;org 7C00h
-org 100h
-
-bits 16
-section .text
+%include "header.asm"
 
 ;--------------------------------------------
 ; Jump to initialization
@@ -50,14 +43,5 @@ main:
 %include "jingle.asm"
 %include "anim.asm"
 
-align 16
 section .data
 %include "data.asm"
-
-;--------------------------------------------
-; Bootloader signature
-; MIght be messed up by sections
-;--------------------------------------------
-align 16
-;times 510-($-$$) db 0
-;dw 0xAA55
