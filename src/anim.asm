@@ -25,6 +25,7 @@
 ;--------------------------------------------
 drawAnimFrame:
 	call drawAnimBackground
+	call drawAnimRainbow
 	retn
 	
 	
@@ -35,3 +36,4 @@ drawAnimBackground:
 	push 7Eh
 	call fillScreen
 	retn
+	

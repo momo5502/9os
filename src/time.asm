@@ -37,3 +37,11 @@ waitTicks:
 	pop bp
 	retn 2
 	
+	
+;--------------------------------------------
+; Wait intervall
+;--------------------------------------------
+waitIntervall:
+	push 1
+	call waitTicks
+	retn

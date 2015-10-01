@@ -4,6 +4,7 @@
 ;       TODO: Implement real segmentation!
 ;
 ;-----------------------------------------------------------------------------------------------------
+section .data
 
 tone: dw 4A0h
 
@@ -20,4 +21,12 @@ nyanCatBlock2End1: dw 2560, 2, 0
 nyanCatBlock2End2: dw 2154, 2, 0
 
 jingleStage: db 0
-jingleStages: dw nyanCatIntro, nyanCatMusic, nyanCatMusic, nyanCatMusic2, nyanCatBlock2End1, nyanCatMusic2, nyanCatBlock2End2, 0, 0
+jingleStages: dw nyanCatIntro, nyanCatMusic, nyanCatMusic, nyanCatMusic2, nyanCatBlock2End1, nyanCatMusic2, nyanCatBlock2End2, 0
+
+rainbowOffset: dw 70
+rainbowBlockHeight: dw 48
+rainbowBlockWidth: dw 18
+rainbowBlockCount: dw 7
+rainbowTable: db 28h, 2Ah, 2Bh, 2Eh, 36h, 6Bh, 0
+rainbowAlternation: db 0
+rainbowAlternationOffset: dw 4

@@ -24,10 +24,10 @@ main:
 	
 	frame:
 		call framePlayJingle
+		call waitIntervall
+		call framePlayJingle
 		call drawAnimFrame
-		
-		push 1
-		call waitTicks
+		call waitIntervall
 		
 		jmp frame
 
@@ -42,6 +42,10 @@ main:
 %include "time.asm"
 %include "jingle.asm"
 %include "anim.asm"
+%include "rainbow.asm"
 
-section .data
+align 16
+
 %include "data.asm"
+
+align 16

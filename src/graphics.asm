@@ -44,3 +44,28 @@ getScreenDim:
 	mul bx	
 	retn
 	
+	
+;--------------------------------------------
+; Write pixel to the frame buffer
+;
+; void __stdcall paintPixel(short x, short y, short color)
+;--------------------------------------------
+paintPixel:
+	pusha
+	mov bp, sp
+	
+	mov cx, [bp + 12h] ; xPos
+	mov dx, [bp + 14h] ; yPos
+	mov ax, [screenWidth]
+	mul dx
+	add ax, cx
+	mov di, ax
+	
+	mov ax, 0A000h
+	mov es, ax
+	
+	mov ax, [bp + 16h] ; color
+	mov byte [es:di], al
+	
+	popa
+	retn 6
