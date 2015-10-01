@@ -30,3 +30,6 @@ rainbowBlockCount: dw 7
 rainbowTable: db 28h, 2Ah, 2Bh, 2Eh, 36h, 6Bh, 0
 rainbowAlternation: db 0
 rainbowAlternationOffset: dw 4
+
+; I have no idea if this segment is used for anything
+backBufferSegment: dw 01000h

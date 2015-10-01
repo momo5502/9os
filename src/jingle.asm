@@ -6,6 +6,28 @@
 
 
 ;--------------------------------------------
+; Play mulptiple tones within a frame
+;--------------------------------------------
+doPlayJingleToneNum:
+	push bp
+	mov bp, sp
+	
+	mov cx, [bp + 4h]
+	
+	doPlayJingleToneNumLoop:
+		push cx
+		call framePlayJingle
+		call waitIntervall
+		pop cx
+		
+		dec cx
+		cmp cx, 0
+		jg doPlayJingleToneNumLoop
+		
+	pop bp
+	retn 2
+
+;--------------------------------------------
 ; Play jingle in frame
 ;--------------------------------------------
 framePlayJingle:

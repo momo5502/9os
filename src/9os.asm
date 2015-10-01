@@ -23,11 +23,10 @@ main:
 	int 10h
 	
 	frame:
-		call framePlayJingle
-		call waitIntervall
-		call framePlayJingle
 		call drawAnimFrame
-		call waitIntervall
+	
+		push 2 ; Tone-Frame-Rate is 2:1
+		call doPlayJingleToneNum
 		
 		jmp frame
 

@@ -24,7 +24,7 @@ drawAnimRainbow:
 		cmp cx, dx
 		jl drawAnimRainbowLoop
 	
-	call applyRainbowAlternation
+	call shiftRainbowAlternation
 	retn
 	
 	
@@ -175,9 +175,9 @@ getRainbowAlternationForId:
 	
 	
 ;--------------------------------------------
-; Handle rainbow alternation
+; Shift rainbow alternation
 ;--------------------------------------------
-applyRainbowAlternation:
+shiftRainbowAlternation:
 	mov al, [rainbowAlternation]
 	xor al, 1
 	mov [rainbowAlternation], al

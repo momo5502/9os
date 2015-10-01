@@ -6,14 +6,14 @@
 
 
 ;--------------------------------------------
-; Fill every pixel on the screen
+; Fill every pixel in the backbuffer
 ;--------------------------------------------
 fillScreen:
 	pusha
 	mov bp, sp
 	
 	; Set segment offset to video buffer
-	mov ax, 0A000h
+	mov ax, [backBufferSegment]
 	mov es, ax
 	xor di, di
 	
@@ -46,7 +46,7 @@ getScreenDim:
 	
 	
 ;--------------------------------------------
-; Write pixel to the frame buffer
+; Write pixel to the backbuffer
 ;
 ; void __stdcall paintPixel(short x, short y, short color)
 ;--------------------------------------------
@@ -61,7 +61,7 @@ paintPixel:
 	add ax, cx
 	mov di, ax
 	
-	mov ax, 0A000h
+	mov ax, [backBufferSegment]
 	mov es, ax
 	
 	mov ax, [bp + 16h] ; color
@@ -69,3 +69,30 @@ paintPixel:
 	
 	popa
 	retn 6
+
+	
+;--------------------------------------------
+; Copy backbuffer to videobuffer
+;--------------------------------------------
+swapBuffer:
+	push ds
+	push si
+	
+	call getScreenDim
+	mov cx, ax
+	
+	mov ax, [backBufferSegment]
+	mov ds, ax
+	
+	mov ax, 0A000h
+	mov es, ax
+	
+	xor si, si
+	xor di, di
+	
+	rep movsb
+
+	pop si
+	pop ds
+	retn
+	

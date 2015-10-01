@@ -26,6 +26,8 @@
 drawAnimFrame:
 	call drawAnimBackground
 	call drawAnimRainbow
+	
+	call swapBuffer
 	retn
 	
 	
