@@ -45,3 +45,4 @@ waitIntervall:
 	push 1
 	call waitTicks
 	retn
+	

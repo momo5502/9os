@@ -182,3 +182,4 @@ shiftRainbowAlternation:
 	xor al, 1
 	mov [rainbowAlternation], al
 	retn
+	

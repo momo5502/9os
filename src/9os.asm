@@ -22,9 +22,10 @@ main:
 	mov ax, 13h 		; Initialize video mode
 	int 10h
 	
-	frame:
+	frame:		
 		call drawAnimFrame
-	
+		call swapBuffer
+		
 		push 2 ; Tone-Frame-Rate is 2:1
 		call doPlayJingleToneNum
 		
