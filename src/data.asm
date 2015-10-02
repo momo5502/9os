@@ -25,8 +25,8 @@ jingleStages: dw nyanCatIntro, nyanCatMusic, nyanCatMusic, nyanCatMusic2, nyanCa
 
 rainbowOffset: dw 70
 rainbowBlockHeight: dw 48
-rainbowBlockWidth: dw 18
-rainbowBlockCount: dw 7
+rainbowBlockWidth: dw 25
+rainbowBlockCount: dw 6
 rainbowTable: db 28h, 2Ah, 2Bh, 2Eh, 36h, 6Bh, 0
 rainbowAlternation: db 0
 rainbowAlternationOffset: dw 4

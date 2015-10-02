@@ -26,7 +26,7 @@ main:
 		call drawAnimFrame
 		call swapBuffer
 		
-		push 2 ; Tone-Frame-Rate is 2:1
+		push 3 ; Tone-Frame-Rate is 3:1
 		call doPlayJingleToneNum
 		
 		jmp frame
