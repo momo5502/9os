@@ -19,7 +19,7 @@ playSound:
 
 	mov cx, [tone]
 
-	; Set frequency (1193180 / 1000)
+	; Set frequency (1193180 / [tone])
 	xor ax, ax
 	mov dx, 42h		; Port
 	mov al, cl			; Value (lower bits)
@@ -50,7 +50,7 @@ stopSound:
 	mov dx, 61h
 	in ax, dx			; Request current speaker data
 	
-	and al, 0FCh		; Remove the play flag
+	not al, 3
 	out dx, ax
 	retn
 	
