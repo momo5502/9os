@@ -12,7 +12,7 @@ playSound:
 	push dx
 	push cx
 	push ax
-	
+
 	mov dx, 43h  ; Port
 	mov ax, 0b6h ; Value
 	out dx, ax
@@ -35,12 +35,12 @@ playSound:
 
 	or ax, 3			; Set play flag
 	out dx, ax			; Apply new flags to speaker
-	
+
 	pop ax
 	pop cx
 	pop dx
 	retn
-	
+
 
 ;--------------------------------------------
 ; Mute speaker
@@ -49,8 +49,10 @@ stopSound:
 	xor ax, ax
 	mov dx, 61h
 	in ax, dx			; Request current speaker data
+
+	mov bl, 3
+	not bl
 	
-	not al, 3
+	and al, bl		; Remove the play flag
 	out dx, ax
 	retn
-	
