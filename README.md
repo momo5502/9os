@@ -1,2 +1,2 @@
 # 9os
-Nyan Cat OS written in asm
+Nyan (9) Cat OS written in asm
