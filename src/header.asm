@@ -10,7 +10,7 @@ bits 16
 
 cmdline			times 497 db 0
 setup_sects	db 0
-root_flags		dw 0
+root_flags  dw 0
 syssize			dw 0
 swap_dev		dw 0
 ram_size		dw 0

@@ -27,17 +27,17 @@ waitTicks:
 
 	call getClockTicks
 	mov bx, ax
-	
+
 	waitSomeTicks_tickLoop:
 		call getClockTicks
 		sub ax, bx
 		cmp ax, [bp + 4h]
 		jle waitSomeTicks_tickLoop
-		
+
 	pop bp
 	retn 2
-	
-	
+
+
 ;--------------------------------------------
 ; Wait intervall
 ;--------------------------------------------

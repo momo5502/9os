@@ -33,3 +33,50 @@ rainbowAlternationOffset: dw 4
 
 ; I have no idea if this segment is used for anything
 backBufferSegment: dw 01000h
+
+;--------------------------------------------
+; Bitmaps
+;--------------------------------------------
+nyanCatBodyBitmap:
+dw 21 ; Width
+dw 18 ; height
+
+; Buffer
+db 10h, 10h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 10h, 10h
+db 10h, 00h, 42h, 42h, 42h, 42h, 42h, 42h, 42h, 42h, 42h, 42h, 42h, 42h, 42h, 42h, 42h, 42h, 42h, 00h, 10h
+db 00h, 42h, 42h, 42h, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 42h, 42h, 42h, 00h
+db 00h, 42h, 42h, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 6Dh, 3Dh, 3Dh, 6Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 42h, 42h, 00h
+db 00h, 42h, 3Dh, 3Dh, 6Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 42h, 00h
+db 00h, 42h, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 6Dh, 3Dh, 3Dh, 42h, 00h
+db 00h, 42h, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 42h, 00h
+db 00h, 42h, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 6Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 42h, 00h
+db 00h, 42h, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 42h, 00h
+db 00h, 42h, 3Dh, 3Dh, 3Dh, 6Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 42h, 00h
+db 00h, 42h, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 6Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 42h, 00h
+db 00h, 42h, 3Dh, 6Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 42h, 00h
+db 00h, 42h, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 42h, 00h
+db 00h, 42h, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 6Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 42h, 00h
+db 00h, 42h, 42h, 3Dh, 6Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 42h, 42h, 00h
+db 00h, 42h, 42h, 42h, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 3Dh, 42h, 42h, 42h, 00h
+db 10h, 00h, 42h, 42h, 42h, 42h, 42h, 42h, 42h, 42h, 42h, 42h, 42h, 42h, 42h, 42h, 42h, 42h, 42h, 00h, 10h
+db 10h, 10h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 10h, 10h
+
+
+nyanCatHeadBitmap:
+dw 16 ; Width
+dw 13 ; height
+
+; Buffer
+db 10h, 10h, 00h, 00h, 10h, 10h, 10h, 10h, 10h, 10h, 10h, 10h, 00h, 00h, 10h, 10h
+db 10h, 00h, 16h, 16h, 00h, 10h, 10h, 10h, 10h, 10h, 10h, 00h, 16h, 16h, 00h, 10h
+db 10h, 00h, 16h, 16h, 16h, 00h, 10h, 10h, 10h, 10h, 00h, 16h, 16h, 16h, 00h, 10h
+db 10h, 00h, 16h, 16h, 16h, 16h, 00h, 00h, 00h, 00h, 16h, 16h, 16h, 16h, 00h, 10h
+db 10h, 00h, 16h, 16h, 16h, 16h, 16h, 16h, 16h, 16h, 16h, 16h, 16h, 16h, 00h, 10h
+db 00h, 16h, 16h, 16h, 16h, 16h, 16h, 16h, 16h, 16h, 16h, 16h, 16h, 16h, 16h, 00h
+db 00h, 16h, 16h, 16h, 00h, 00h, 16h, 16h, 16h, 16h, 16h, 00h, 00h, 16h, 16h, 00h
+db 00h, 16h, 16h, 16h, 00h, 00h, 16h, 16h, 16h, 00h, 16h, 00h, 00h, 16h, 16h, 00h
+db 00h, 16h, 40h, 40h, 16h, 16h, 16h, 16h, 16h, 16h, 16h, 16h, 16h, 40h, 40h, 00h
+db 00h, 16h, 40h, 40h, 16h, 00h, 16h, 16h, 00h, 16h, 16h, 00h, 16h, 40h, 40h, 00h
+db 10h, 00h, 16h, 16h, 16h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 16h, 16h, 00h, 10h
+db 10h, 10h, 00h, 16h, 16h, 16h, 16h, 16h, 16h, 16h, 16h, 16h, 16h, 00h, 10h, 10h
+db 10h, 10h, 10h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 00h, 10h, 10h, 10h

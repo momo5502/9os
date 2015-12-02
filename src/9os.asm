@@ -21,14 +21,14 @@ main:
 	mov sp, 9C00h		; Initialize stack
 	mov ax, 13h 		; Initialize video mode
 	int 10h
-	
-	frame:		
+
+	frame:
 		call drawAnimFrame
 		call swapBuffer
-		
+
 		push 3 ; Tone-Frame-Rate is 3:1
 		call doPlayJingleToneNum
-		
+
 		jmp frame
 
 	jmp $					; Infinite loop
@@ -39,6 +39,7 @@ main:
 ;--------------------------------------------
 %include "graphics.asm"
 %include "sound.asm"
+%include "bitmap.asm"
 %include "time.asm"
 %include "jingle.asm"
 %include "anim.asm"

@@ -52,7 +52,7 @@ stopSound:
 
 	mov bl, 3
 	not bl
-	
+
 	and al, bl		; Remove the play flag
 	out dx, ax
 	retn
