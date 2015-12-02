@@ -19,39 +19,51 @@
 
 ;--------------------------------------------
 ; Draw a bitmap
-; Parameters: bitmap, x, y
+; Parameters: bitmap, x, y, scale
 ;--------------------------------------------
 drawBitmap:
-	pusha
-	mov bp, sp
+  pusha
+  mov bp, sp
 
-  mov bx, [bp + 12h] ; Get bitmap
-  mov cx, [bx + 2h] ; Get height
   xor dx, dx
 
   add bx, 4h
   mov ax, bx
 
   drawBitmapLoop:
+  
+    xor cx, cx
+  
+    drawBitmapLoopScaleLoop:
 
-    ; Push width
-    mov bx, [bp + 12h] ; Get bitmap
-    mov bx, [bx] ; Get width
-    push bx
+      ; Push width
+      mov bx, [bp + 12h] ; Get bitmap
+      mov bx, [bx] ; Get width
+      push bx
 
-    ; Push Y coord
-    mov bx, [bp + 16h] ; Get Y coordinate
-    add bx, dx
-    push bx
+      ; Push Y coord
+      push ax
+      push dx
+      mov ax, [bp + 18h] ; Get scale
+      mul dx
+      mov bx, [bp + 16h] ; Get Y coordinate
+      add bx, ax
+      pop dx
+      pop ax
+      push bx
 
-    ; Push X coord
-    mov bx, [bp + 14h] ; Get X coordinate
-    push bx
+      ; Push X coord
+      mov bx, [bp + 14h] ; Get X coordinate
+      push bx
 
-    ; Push row buffer/pointer
-    push ax
+      ; Push row buffer/pointer
+      push ax
 
-    call drawBitmapRow
+      call drawBitmapRow
+    
+      mov bx, [bp + 18h] ; Get scale
+      cmp cx, bx
+      jl drawBitmapLoopScaleLoop
 
     ; Increment buffer position
     mov bx, [bp + 12h] ; Get bitmap
@@ -64,12 +76,12 @@ drawBitmap:
 
     jl drawBitmapLoop
 
-	popa
-	retn 6
+  popa
+  retn 8
 
 ;--------------------------------------------
 ; Draw a bitmap row
-; Parameters: pointer, x, y, width
+; Parameters: pointer, x, y, width, scale
 ;--------------------------------------------
 drawBitmapRow:
   pusha
@@ -78,28 +90,56 @@ drawBitmapRow:
   xor cx, cx
 
   drawBitmapRowLoop:
+  
+    xor dx, dx
+  
+    drawBitmapRowLoopScaleLoop:
 
-    ; Push color
-    mov bx, [bp + 12h] ; Get pointer
-    add bx, cx
-    mov bx, word [bx]
+      ; Push color
+      mov bx, [bp + 12h] ; Get pointer
+      add bx, cx
+      mov bx, word [bx]
 
-    ; Check if transparent
-    cmp bl, 10h
-    je drawBitmapRowLoopPaintDone
+      ; Check if transparent
+      cmp bl, 10h
+      je drawBitmapRowLoopPaintDone
 
-    push bx
+      push bx
 
-    ; Push Y coord
-    mov bx, [bp + 16h] ; Get Y coord
-    push bx
+      ; Push Y coord
+      mov bx, [bp + 16h] ; Get Y coord
+      push bx
 
-    ; Push X coord
-    mov bx, [bp + 14h] ; Get X coord
-    add bx, cx
-    push bx
+      ; Push X coord
+      push dx
+      mov ax, [bp + 1Ah] ; Get scale
+      mul cx
+      mov bx, [bp + 14h] ; Get X coord
+      add bx, ax
+      pop dx
+      push bx
 
-    call paintPixel
+      call paintPixel
+      
+      inc dx
+      
+      ; Check if exceeding width within scale
+      push dx
+      mov ax, [bp + 1Ah] ; Get scale
+      mul cx
+      mov bx, [bp + 14h] ; Get X coord
+      add bx, ax
+      pop dx
+      add bx, dx
+      mov ax, [screenWidth]
+      cmp bx, ax
+      jge drawBitmapRowFinish
+      
+      ; Check if scale loop is done
+      mov ax, [bp + 1Ah]
+      cmp dx, ax
+      jl drawBitmapRowLoopScaleLoop
+      
 
     drawBitmapRowLoopPaintDone:
 
@@ -123,4 +163,4 @@ drawBitmapRow:
 
   drawBitmapRowFinish:
   popa
-  retn 8
+  retn 10
