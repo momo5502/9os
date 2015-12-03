@@ -27,6 +27,9 @@ drawAnimFrame:
 	call drawAnimBackground
 	call drawAnimRainbow
 	call drawAnimCat
+
+	push 3 ; Shift rainbow every 3 ticks
+  call shiftRainbowAnim
 	retn
 
 
@@ -49,3 +52,28 @@ drawAnimCat:
   push nyanCatAnimBitmap
 	call drawAnimBitmap
 	retn
+
+
+;--------------------------------------------
+; Shift rainbow animation
+;--------------------------------------------
+rainbowAnimIndex: dw 0
+shiftRainbowAnim:
+	pusha
+	mov bp, sp
+
+	mov bx, [rainbowAnimIndex]
+	add bx, 1
+
+	mov ax, [bp + 12h]
+	cmp bx, ax ; Every AX ticks
+	jl shiftRainbowAnimStore
+
+	xor bx, bx
+  call shiftRainbowAlternation
+
+  shiftRainbowAnimStore:
+	mov [rainbowAnimIndex], bx
+
+  popa
+	retn 2

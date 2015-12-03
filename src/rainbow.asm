@@ -24,7 +24,7 @@ drawAnimRainbow:
 		cmp cx, dx
 		jl drawAnimRainbowLoop
 
-	call shiftRainbowAlternation
+	;call shiftRainbowAlternation
 	retn
 
 
@@ -182,4 +182,3 @@ shiftRainbowAlternation:
 	xor al, 1
 	mov [rainbowAlternation], al
 	retn
-	
