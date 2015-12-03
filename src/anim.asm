@@ -43,13 +43,13 @@ drawAnimBackground:
 ; Draw background
 ;--------------------------------------------
 drawAnimCat:
-        push 3  ; Scale
+  push 3  ; Scale
 	push 10 ; Y
 	push 10 ; X
 	push nyanCatBodyBitmap
 	call drawBitmap
 
-        push 3  ; Scale
+  push 3  ; Scale
 	push 15 ; Y
 	push 20 ; X
 	push nyanCatHeadBitmap
