@@ -31,14 +31,10 @@ drawBitmap:
   mov ax, bx
 
   drawBitmapLoop:
-
+  
     xor cx, cx
-
+  
     drawBitmapLoopScaleLoop:
-
-      ; Push scale
-      ;mov bx, [bp + 18h] ; Get scale
-      ;push bx
 
       ; Push width
       mov bx, [bp + 12h] ; Get bitmap
@@ -64,7 +60,7 @@ drawBitmap:
       push ax
 
       call drawBitmapRow
-
+    
       mov bx, [bp + 18h] ; Get scale
       cmp cx, bx
       jl drawBitmapLoopScaleLoop
@@ -94,9 +90,9 @@ drawBitmapRow:
   xor cx, cx
 
   drawBitmapRowLoop:
-
+  
     xor dx, dx
-
+  
     drawBitmapRowLoopScaleLoop:
 
       ; Push color
@@ -124,9 +120,9 @@ drawBitmapRow:
       push bx
 
       call paintPixel
-
+      
       inc dx
-
+      
       ; Check if exceeding width within scale
       push dx
       mov ax, [bp + 1Ah] ; Get scale
@@ -138,12 +134,12 @@ drawBitmapRow:
       mov ax, [screenWidth]
       cmp bx, ax
       jge drawBitmapRowFinish
-
+      
       ; Check if scale loop is done
       mov ax, [bp + 1Ah]
       cmp dx, ax
       jl drawBitmapRowLoopScaleLoop
-
+      
 
     drawBitmapRowLoopPaintDone:
 
