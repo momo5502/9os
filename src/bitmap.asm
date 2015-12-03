@@ -18,6 +18,57 @@
 ;--------------------------------------------
 
 ;--------------------------------------------
+; Draw an animation bitmap
+; Parameters: animbitmap, x, y
+;--------------------------------------------
+drawAnimBitmap:
+  pusha
+  mov bp, sp
+
+  ; Get animbitmap
+	mov bx, [bp + 12h]
+
+  ; Get current position
+	mov ax, [bx]
+
+	add ax, 2
+  add bx, ax
+
+	; Check if end of anim
+  mov cx, [bx]
+	test cx, cx
+	jnz drawAnimBitmapDraw
+
+  ; Reset position to 0
+  sub bx, ax
+	add bx, 2
+	mov ax, 2
+
+  drawAnimBitmapDraw:
+
+  ; Store new position
+	push bx
+	mov bx, [bp + 12h]
+	mov [bx], ax
+	pop bx
+
+  ; Y coord
+	mov dx, [bp + 16h]
+	push dx
+
+  ; X coord
+	mov dx, [bp + 14h]
+	push dx
+
+  ; Push bitmap
+	mov bx, [bx]
+  push bx
+	call drawBitmap
+
+  popa
+  retn 6
+
+;--------------------------------------------
 ; Draw a bitmap
 ; Parameters: bitmap, x, y
 ;--------------------------------------------
