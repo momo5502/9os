@@ -43,11 +43,9 @@ drawAnimBackground:
 ; Draw background
 ;--------------------------------------------
 drawAnimCat:
-	push 65 ; Y
+  push 3   ; Scale
+	push 65  ; Y
 	push 110 ; X
-	;push nyanCatFullBitmap
-	;call drawBitmap
-
   push nyanCatAnimBitmap
 	call drawAnimBitmap
 	retn
