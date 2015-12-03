@@ -26,48 +26,48 @@ drawAnimBitmap:
   mov bp, sp
 
   ; Get animbitmap
-	mov bx, [bp + 12h]
+  mov bx, [bp + 12h]
 
   ; Get current position
-	mov ax, [bx]
+  mov ax, [bx]
 
-	add ax, 2
+  add ax, 2
   add bx, ax
 
-	; Check if end of anim
+  ; Check if end of anim
   mov cx, [bx]
-	test cx, cx
-	jnz drawAnimBitmapDraw
+  test cx, cx
+  jnz drawAnimBitmapDraw
 
   ; Reset position to 0
   sub bx, ax
-	add bx, 2
-	mov ax, 2
+  add bx, 2
+  mov ax, 2
 
   drawAnimBitmapDraw:
 
   ; Store new position
-	push bx
-	mov bx, [bp + 12h]
-	mov [bx], ax
-	pop bx
+  push bx
+  mov bx, [bp + 12h]
+  mov [bx], ax
+  pop bx
 
   ; Scale
   mov dx, [bp + 18h]
   push dx
 
   ; Y coord
-	mov dx, [bp + 16h]
-	push dx
+  mov dx, [bp + 16h]
+  push dx
 
   ; X coord
-	mov dx, [bp + 14h]
-	push dx
+  mov dx, [bp + 14h]
+  push dx
 
   ; Push bitmap
-	mov bx, [bx]
+  mov bx, [bx]
   push bx
-	call drawBitmap
+  call drawBitmap
 
   popa
   retn 8

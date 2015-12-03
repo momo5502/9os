@@ -18,21 +18,21 @@ jmp main
 ; Main entry point
 ;--------------------------------------------
 main:
-	mov sp, 9C00h		; Initialize stack
-	mov ax, 13h 		; Initialize video mode
-	int 10h
+  mov sp, 9C00h    ; Initialize stack
+  mov ax, 13h     ; Initialize video mode
+  int 10h
 
-	frame:
-		call drawAnimFrame
-		call swapBuffer
+  frame:
+    call drawAnimFrame
+    call swapBuffer
 
-		push 1;3; Tone-Frame-Rate is 3:1
-		call doPlayJingleToneNum
+    push 1;3; Tone-Frame-Rate is 3:1
+    call doPlayJingleToneNum
 
-		jmp frame
+    jmp frame
 
-	jmp $					; Infinite loop
-	hlt						; Halt causes a return to pxelinux
+  jmp $          ; Infinite loop
+  hlt            ; Halt causes a return to pxelinux
 
 ;--------------------------------------------
 ; Load external sources

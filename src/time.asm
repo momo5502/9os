@@ -10,39 +10,39 @@
 ; Return in eax
 ;--------------------------------------------
 getClockTicks:
-	push ds
-	xor eax,eax
-	mov ds,eax
-	mov eax, [ds:46Ch]
-	pop ds
-	retn
+  push ds
+  xor eax,eax
+  mov ds,eax
+  mov eax, [ds:46Ch]
+  pop ds
+  retn
 
 
 ;--------------------------------------------
 ; Wait given ticks
 ;--------------------------------------------
 waitTicks:
-	push bp
-	mov bp, sp
+  push bp
+  mov bp, sp
 
-	call getClockTicks
-	mov bx, ax
+  call getClockTicks
+  mov bx, ax
 
-	waitSomeTicks_tickLoop:
-		call getClockTicks
-		sub ax, bx
-		cmp ax, [bp + 4h]
-		jle waitSomeTicks_tickLoop
+  waitSomeTicks_tickLoop:
+    call getClockTicks
+    sub ax, bx
+    cmp ax, [bp + 4h]
+    jle waitSomeTicks_tickLoop
 
-	pop bp
-	retn 2
+  pop bp
+  retn 2
 
 
 ;--------------------------------------------
 ; Wait intervall
 ;--------------------------------------------
 waitIntervall:
-	push 1
-	call waitTicks
-	retn
-	
+  push 1
+  call waitTicks
+  retn
+  

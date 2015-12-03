@@ -9,50 +9,50 @@
 ; Start playing a given tone
 ;--------------------------------------------
 playSound:
-	push dx
-	push cx
-	push ax
+  push dx
+  push cx
+  push ax
 
-	mov dx, 43h  ; Port
-	mov ax, 0b6h ; Value
-	out dx, ax
+  mov dx, 43h  ; Port
+  mov ax, 0b6h ; Value
+  out dx, ax
 
-	mov cx, [tone]
+  mov cx, [tone]
 
-	; Set frequency (1193180 / [tone])
-	xor ax, ax
-	mov dx, 42h		; Port
-	mov al, cl			; Value (lower bits)
-	out dx, ax
+  ; Set frequency (1193180 / [tone])
+  xor ax, ax
+  mov dx, 42h    ; Port
+  mov al, cl      ; Value (lower bits)
+  out dx, ax
 
-	xor ax, ax
-	mov dx, 42h		; Port
-	mov al, ch		; Value (higher bits)
-	out dx, ax
+  xor ax, ax
+  mov dx, 42h    ; Port
+  mov al, ch    ; Value (higher bits)
+  out dx, ax
 
-	mov dx, 61h		; Speaker port
-	in ax, dx			; Request current flags
+  mov dx, 61h    ; Speaker port
+  in ax, dx      ; Request current flags
 
-	or ax, 3			; Set play flag
-	out dx, ax			; Apply new flags to speaker
+  or ax, 3      ; Set play flag
+  out dx, ax      ; Apply new flags to speaker
 
-	pop ax
-	pop cx
-	pop dx
-	retn
+  pop ax
+  pop cx
+  pop dx
+  retn
 
 
 ;--------------------------------------------
 ; Mute speaker
 ;--------------------------------------------
 stopSound:
-	xor ax, ax
-	mov dx, 61h
-	in ax, dx			; Request current speaker data
+  xor ax, ax
+  mov dx, 61h
+  in ax, dx      ; Request current speaker data
 
-	mov bl, 3
-	not bl
+  mov bl, 3
+  not bl
 
-	and al, bl		; Remove the play flag
-	out dx, ax
-	retn
+  and al, bl    ; Remove the play flag
+  out dx, ax
+  retn
