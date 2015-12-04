@@ -39,9 +39,9 @@ waitTicks:
 
 
 ;--------------------------------------------
-; Wait intervall
+; Wait interval
 ;--------------------------------------------
-waitIntervall:
+waitInterval:
   push 1
   call waitTicks
   retn
