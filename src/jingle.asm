@@ -17,7 +17,7 @@ doPlayJingleToneNum:
   doPlayJingleToneNumLoop:
     push cx
     call framePlayJingle
-    call waitIntervall
+    call waitInterval
     pop cx
 
     dec cx
