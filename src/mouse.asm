@@ -11,6 +11,14 @@
 mouseEnable:
 	push es
 
+	mov bh, 3
+	mov ax, 0C205h
+	int 15h
+
+	mov bh,3
+	mov ax, 0C203h
+	int 15h
+
 	mov ax, 0C207h
 	mov cx, cs
 	mov es, cx
