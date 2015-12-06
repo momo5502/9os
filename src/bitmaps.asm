@@ -16,6 +16,11 @@ dw 0
 dw 0
 db 10h
 
+blackPixel:
+dw 1
+dw 1
+db 0
+
 nyanCatFull1Bitmap:
 dw 33 ; Width
 dw 20 ; height

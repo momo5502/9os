@@ -30,6 +30,8 @@ drawAnimFrame:
 
   push 3 ; Shift rainbow every 3 ticks
   call shiftRainbowAnim
+
+  ;call drawMouse
   retn
 
 

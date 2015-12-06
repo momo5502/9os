@@ -22,6 +22,8 @@ main:
   mov ax, 13h     ; Initialize video mode
   int 10h
 
+  ;call mouseEnable
+
   frame:
     call drawAnimFrame
     call swapBuffer
@@ -38,6 +40,7 @@ main:
 ; Load external sources
 ;--------------------------------------------
 %include "graphics.asm"
+%include "mouse.asm"
 %include "sound.asm"
 %include "bitmap.asm"
 %include "time.asm"
