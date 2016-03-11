@@ -4,7 +4,8 @@
 ;       Copied from memdisk source (http://repo.or.cz/syslinux.git/blob/HEAD:/memdisk/memdisk16.asm#l47)
 ;
 ;-----------------------------------------------------------------------------------------------------
-org 100h
+org 100h ; PXE Boot
+;org 7C00h ; Bootloader
 
 section .text
 bits 16
