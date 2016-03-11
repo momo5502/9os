@@ -19,3 +19,6 @@ Run the shell script in your terminal using `./make-macosx.sh`
 ## Installation
 This OS was made to be loaded via PXE, so you are required to run some sort of PXE server with pxelinux.  
 Alternatively, you can use DOSBox to run 9os.com as a DOS binary, this will work just fine.  
+
+## Credits
+* NASM (http://www.nasm.us/)
